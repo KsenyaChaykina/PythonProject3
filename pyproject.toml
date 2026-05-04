@@ -1,0 +1,35 @@
+[project]
+name = "pythonproject3"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Ksenya Chaykina",email = "ksushechka0901@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-dotenv (>=1.2.2,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.lint.dependencies]
+black = "^26.3.1"
+mypy = "^1.20.2"
+flake8 = "^7.3.0"
+isort = "^8.0.1"
+
+[tool.mypy]
+disallow_untyped_defs = true
+warn_return_any = true
+exclude = 'venv'
+
+[tool.black]
+line-length = 119
+
+[tool.isort]
+line_length = 119
+
