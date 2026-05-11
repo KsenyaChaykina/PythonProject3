@@ -40,4 +40,3 @@ def test_init_category_1(category_1):
     assert Category.category_count == 1
     # Тест для подсчета продуктов
     assert Category.product_count == 2
-
