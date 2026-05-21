@@ -11,11 +11,17 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        return (self.price * self.quantity) + (other.price * other.quantity)
+
     @classmethod
     def new_product(cls, data: dict):
         """ Распаковываем словарь и передаем его параметры в класс """
         try:
-           return cls(**data)
+            return cls(**data)
         except Exception as e:
             return {e}
 
@@ -33,19 +39,22 @@ class Product:
 
 if __name__ == "__main__":
     product = Product('apple', 'fruit', 5, 6)
-
-    print(product.name)
-    print(product.description)
-    print(product.price)
-    print(product.quantity)
+    product3 = Product('apple', 'fruit', 5, 10)
+    #
+    # print(product.name)
+    # print(product.description)
+    # print(product.price)
+    # print(product.quantity)
 
     my_dict = {"name": "carrot", "description": "vegetable", "price": 4, "quantity": 15}
     product2 = Product.new_product(my_dict)
 
-    print(product2.name)
-    print(product2.description)
-    print(product2.price)
-    print(product2.quantity)
+    # print(product2.name)
+    # print(product2.description)
+    # print(product2.price)
+    # print(product2.quantity)
+    #
+    # product2.price = 0
+    # print(product2.price)
 
-    product2.price = 0
-    print(product2.price)
+    print(product,product3)

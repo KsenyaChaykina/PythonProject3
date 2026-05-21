@@ -21,12 +21,19 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
 
+    def __str__(self):
+        total_products = 0
+        for product in self.__products:
+            total_products += product.quantity
+        return f'{self.name}, количество продуктов: {total_products}'
+
+
     @property
     def products(self):
         """ Выводит список товаров в виде строк """
         products_str = ''
         for product in self.__products:
-            products_str += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
+            products_str += f'{str(product)}\n'
         return products_str
 
     @products.setter
@@ -41,16 +48,21 @@ if __name__ == "__main__":
     product3 = Product('candies', "sweets", 13, 20)
 
     category = Category('food', 'vegetable', [product1, product2, product3])
+    category2 = Category('food', 'vegetable', [product1, product2])
 
     #print(category.name)
     #print(category.description)
-    print(category.products)
-
-    print(category.category_count)
-    print(Category.product_count)
+    # print(category.products)
+    #
+    # print(category.category_count)
+    # print(Category.product_count)
 
     product4 = Product('candies', "sweets", 10, 15)
-    category.products = product4
+    # category.products = product4
 
-    print(category.products)
-    print(Category.product_count)
+    # print(category.products)
+    # print(Category.product_count)
+
+    print(category, category2)
+
+
