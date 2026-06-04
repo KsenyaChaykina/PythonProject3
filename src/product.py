@@ -4,18 +4,24 @@ class Product:
     description: str
     price: float
     quantity: int
+    color: str
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, color=None):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self.color = color
 
     def __str__(self):
+        """ Выводит строку формата Название продукта, __ руб. Остаток: __ шт."""
         return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        return (self.price * self.quantity) + (other.price * other.quantity)
+        """ Полная стоимость всех товаров на складе """
+        if type(other) is Product:
+            return (self.price * self.quantity) + (other.price * other.quantity)
+        raise TypeError
 
     @classmethod
     def new_product(cls, data: dict):
@@ -31,6 +37,7 @@ class Product:
 
     @price.setter
     def price(self, new_price: float):
+        """ Проверка что цена выше нуля и не равна нулю """
         if new_price <= 0:
             print('Цена не должна быть нулевая или отрицательная')
         else:
@@ -45,16 +52,19 @@ if __name__ == "__main__":
     # print(product.description)
     # print(product.price)
     # print(product.quantity)
+    # print(product.color)
 
     my_dict = {"name": "carrot", "description": "vegetable", "price": 4, "quantity": 15}
     product2 = Product.new_product(my_dict)
 
-    # print(product2.name)
-    # print(product2.description)
-    # print(product2.price)
-    # print(product2.quantity)
-    #
+    print(product2.name)
+    print(product2.description)
+    print(product2.price)
+    print(product2.quantity)
+    print(product2.color)
+
     # product2.price = 0
     # print(product2.price)
 
-    print(product,product3)
+    print(product + product3)
+    print(product, product3)

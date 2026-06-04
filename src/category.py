@@ -17,16 +17,17 @@ class Category:
         Category.product_count += len(products) if products else 0
 
     def add_product(self, product: Product):
-        if isinstance(product, Product):
+        if issubclass(product.__class__, Product):
             self.__products.append(product)
             Category.product_count += 1
+        else:
+            raise TypeError
 
     def __str__(self):
         total_products = 0
         for product in self.__products:
             total_products += product.quantity
         return f'{self.name}, количество продуктов: {total_products}'
-
 
     @property
     def products(self):
@@ -50,8 +51,8 @@ if __name__ == "__main__":
     category = Category('food', 'vegetable', [product1, product2, product3])
     category2 = Category('food', 'vegetable', [product1, product2])
 
-    #print(category.name)
-    #print(category.description)
+    # print(category.name)
+    # print(category.description)
     # print(category.products)
     #
     # print(category.category_count)
@@ -64,5 +65,3 @@ if __name__ == "__main__":
     # print(Category.product_count)
 
     print(category, category2)
-
-
