@@ -1,5 +1,4 @@
 from src.category import Category
-from src.product import Product
 
 
 def test_init_category_1(category_1, category_2):
