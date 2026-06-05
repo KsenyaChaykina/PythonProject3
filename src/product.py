@@ -1,4 +1,7 @@
-class Product:
+from src.base_poduct import BaseProduct
+from src.print_mixin import PrintMixin
+
+class Product(BaseProduct, PrintMixin):
     """ Класс «Продукты» """
     name: str
     description: str
@@ -12,6 +15,7 @@ class Product:
         self.__price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
 
     def __str__(self):
         """ Выводит строку формата Название продукта, __ руб. Остаток: __ шт."""

@@ -18,10 +18,10 @@ def test_init_product_2(product_2):
 def test_product_price(capsys, product_1):
     product_1.price = -30
     massage = capsys.readouterr()
-    assert massage.out.strip() == 'Цена не должна быть нулевая или отрицательная'
+    assert massage.out.strip().split("\n")[-1] == 'Цена не должна быть нулевая или отрицательная'
     product_1.price = 0
     massage = capsys.readouterr()
-    assert massage.out.strip() == 'Цена не должна быть нулевая или отрицательная'
+    assert massage.out.strip().split("\n")[-1] == 'Цена не должна быть нулевая или отрицательная'
     product_1.price = 40
     assert product_1.price == 40
 
