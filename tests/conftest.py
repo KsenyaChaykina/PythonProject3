@@ -55,3 +55,11 @@ def product_class_grass1():
 @pytest.fixture
 def product_class_grass2():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 10, 5, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def category_without_products():
+    return Category(
+        name='food1',
+        description='fruit1'
+    )

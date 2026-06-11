@@ -20,3 +20,8 @@ def test_products_property(product_1, product_2):
 def test_category_str(category_1, category_2):
     assert str(category_1) == 'food, количество продуктов: 6'
     assert str(category_2) == 'food, количество продуктов: 14'
+
+def test_middle_price(category_1, category_without_products):
+    assert category_1.middle_price() == 2
+    assert category_without_products.middle_price() == 0
+
