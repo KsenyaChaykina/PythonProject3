@@ -41,4 +41,3 @@ def test_product_str(product_1, product_2, category_1):
 
 def test_product_add(product_1, product_2):
     assert product_1 + product_2 == 92.5
-

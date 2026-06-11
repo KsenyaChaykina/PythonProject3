@@ -1,6 +1,7 @@
 from src.base_poduct import BaseProduct
 from src.print_mixin import PrintMixin
 
+
 class Product(BaseProduct, PrintMixin):
     """ Класс «Продукты» """
     name: str
