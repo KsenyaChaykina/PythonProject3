@@ -42,6 +42,12 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
+    def middle_price(self):
+        try:
+            return sum([product.price for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+
 
 if __name__ == "__main__":
     product1 = Product('apple', 'fruit', 15, 60)
@@ -65,3 +71,8 @@ if __name__ == "__main__":
     # print(Category.product_count)
 
     print(category, category2)
+
+    print(category.middle_price())
+
+    category3 = Category('food', 'vegetable', [])
+    print(category3.middle_price())
